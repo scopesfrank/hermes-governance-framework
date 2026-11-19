@@ -1,0 +1,10 @@
+repos:
+  # Secret-Scanning via fertige gitleaks-Binary (kein Go-Build:
+  # die App-Control-Policy dieser Maschine blockiert go.exe).
+  - repo: local
+    hooks:
+      - id: gitleaks
+        name: gitleaks (secret scan)
+        entry: C:/Users/User/AppData/Local/Microsoft/WinGet/Packages/Gitleaks.Gitleaks_Microsoft.Winget.Source_8wekyb3d8bbwe/gitleaks.exe git --pre-commit --staged --redact --no-banner
+        language: system
+        pass_filenames: false

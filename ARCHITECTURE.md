@@ -72,3 +72,24 @@ Consequential actions (publishing, deploying, spending) pass through the gate
 - A single accountable owner per action.
 - Every consequential action authorized by an explicit, inspectable state — never by a heuristic.
 - A written trail of *why* each action was allowed, refused, or failed closed.
+
+## 8. Known limits (and why we publish them)
+
+The gate is a reference implementation, not a finished production service. Three
+failure modes appear at the state boundary once the pattern runs live — and each has
+a standard mitigation:
+
+1. **Non-atomic action + state write** (at-least-once): a crash between a successful
+   side effect and the state write re-fires the action. Mitigation: an idempotency
+   key, or a `PENDING → COMMITTED` intent log.
+2. **Unbounded state growth & concurrency**: `seen_ids` grows monotonically and
+   concurrent writers race. Mitigation: atomic `.tmp → os.replace()` swap, a single
+   writer, or SQLite in WAL mode.
+3. **Art. 50 marking persistence**: embedded EXIF/XMP/C2PA is often stripped on
+   upload, so the check uses the platform's native flag and verifies the *published*
+   item. "Flag set" is still not "perceivable at first exposure" — that stays the
+   `OPEN` finding K1.
+
+Full detail and mitigations: [`docs/production-hardening.md`](docs/production-hardening.md).
+Recording these is the same discipline as keeping K1 open: a gate that advertises
+only its strengths is marketing, not evidence.

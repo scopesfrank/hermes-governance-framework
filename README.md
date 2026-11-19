@@ -114,7 +114,8 @@ hermes-governance-framework/
 ├── docs/
 │   ├── governance-policy.md        # rules as versioned Markdown (policy-as-code)
 │   ├── gate-state-machine.md       # formal definition + transition table
-│   └── ai-act-article-50.md        # how Art. 50 obligations map to gates
+│   ├── ai-act-article-50.md        # how Art. 50 obligations map to gates
+│   └── production-hardening.md     # known limits + mitigations for live deployment
 ├── gate/
 │   └── release_gate.py             # generic, dependency-free gate implementation
 └── examples/
