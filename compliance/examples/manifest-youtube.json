@@ -1,0 +1,19 @@
+{
+  "id": "demo-artifact",
+  "surface": "youtube",
+  "ai_generated_content": true,
+  "title": "Demo short",
+  "description_file": "youtube-desc.txt",
+  "media": [],
+  "disclosure": {
+    "human_notice_text": "artificial intelligence (image and sound)",
+    "machine_marking": true,
+    "perceivable_at_exposure": true
+  },
+  "lektoriert": true,
+  "claims": [
+    { "text": "Example statement with a source", "source": "https://example.org/source" }
+  ],
+  "third_party_media": [],
+  "files": []
+}

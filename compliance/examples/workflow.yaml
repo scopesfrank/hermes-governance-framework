@@ -1,0 +1,52 @@
+workflow: demo-pipeline
+owner: example-owner
+author: example-author
+triggered_by: ci
+
+datasets:
+  - name: uploads
+    path: uploads.csv
+    primary_key: id
+    required_columns:
+      - id
+      - title
+      - status
+    baseline_schema:
+      - id
+      - title
+      - status
+    lineage:
+      source: example-source
+      transforms:
+        - normalize
+      destination: example-target
+      owner: example-owner
+
+# only the controls that apply to this example workflow
+controls:
+  - SEC-03-BACKUP-RESTORE
+  - ETH-03-TRANSPARENCY
+  - ARC-02-METADATA-CATALOG
+
+review_delegates:
+  ETH-03-TRANSPARENCY: reviewer-agent
+
+attestations:
+  - control_id: SEC-03-BACKUP-RESTORE
+    status: verified
+    reviewer: reviewer-agent
+    reviewed_at: "2026-11-19"
+    valid_until: "2027-11-19"
+    evidence_uri: attest-evidence.txt
+  - control_id: ETH-03-TRANSPARENCY
+    status: verified
+    reviewer: reviewer-agent
+    reviewed_at: "2026-11-19"
+    valid_until: "2027-11-19"
+    evidence_uri: attest-evidence.txt
+  - control_id: ARC-02-METADATA-CATALOG
+    status: verified
+    reviewer: reviewer-agent
+    reviewed_at: "2026-11-19"
+    valid_until: "2027-11-19"
+    evidence_uri: attest-evidence.txt

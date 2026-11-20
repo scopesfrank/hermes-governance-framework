@@ -1,0 +1,2 @@
+Evidence placeholder — a real attestation points to a concrete artifact
+(IAM snapshot, KMS config, restore-drill log, review record, ...).

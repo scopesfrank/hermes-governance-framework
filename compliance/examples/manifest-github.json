@@ -1,0 +1,11 @@
+{
+  "id": "demo-repo",
+  "surface": "github",
+  "files": [
+    "../../LICENSE",
+    "../../DISCLAIMER.md",
+    "../../README.md"
+  ],
+  "claims": [],
+  "third_party_media": []
+}

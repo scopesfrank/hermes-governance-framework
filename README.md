@@ -103,6 +103,15 @@ including one **open finding (K1)** that is *not* yet satisfied — lives in
 The point of shipping an *open* finding is deliberate: honest governance evidence records
 what is **not** yet compliant, and why, rather than showing only green checks.
 
+## Compliance gates
+
+Beyond the release gate, `compliance/` ships two fail-closed gates that apply to
+any workflow — one for a single public artifact (AI disclosure, secrets, PII,
+claims, licenses) and one for a whole workflow (data quality + audited
+attestations with four-eyes, scope-binding, staggered TTL and break-glass). A
+unified runner (`compliance/gates.py`) exits `1` if any gate blocks. See
+[`compliance/README.md`](compliance/README.md).
+
 ## Repository layout
 
 ```
@@ -118,6 +127,10 @@ hermes-governance-framework/
 │   └── production-hardening.md     # known limits + mitigations for live deployment
 ├── gate/
 │   └── release_gate.py             # generic, dependency-free gate implementation
+├── compliance/
+│   ├── prepublish_gate.py          # pre-publication artifact gate (diffuse)
+│   ├── workflow_gate.py            # data-quality + attestation conformance (diffuse)
+│   └── gates.py                    # unified runner (exit 1 on any block)
 └── examples/
     └── compliance-check-art50.md   # anonymized check incl. open finding K1
 ```

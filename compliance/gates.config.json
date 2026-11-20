@@ -1,0 +1,9 @@
+{
+  "workflows": [
+    "examples/workflow.yaml"
+  ],
+  "artifacts": [
+    "examples/manifest-youtube.json",
+    "examples/manifest-github.json"
+  ]
+}
